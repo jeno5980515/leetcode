@@ -3,14 +3,9 @@
  * @return {number[]}
  */
 var findDuplicates = function(nums) {
-    let result = [];
-    nums.forEach((num, index) => {
+    return nums.reduce((result, num) => {
         const number = Math.abs(num);
-        if ( nums[number - 1] < 0 ) {
-            result.push(number);
-        } else {
-            nums[number - 1] *= -1 ;
-        }
-    })
-    return result;
+        nums[number - 1] < 0 ? result.push(number) : nums[number - 1] *= -1 ;
+        return result;
+    }, []);
 };
